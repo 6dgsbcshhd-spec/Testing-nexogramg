@@ -1,0 +1,243 @@
+<!doctype html><html lang='ru'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'><title>Nexogram</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#07111d;color:#f5f7fb;transition:background .28s,color .28s;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body.light{background:#f3f6fa;color:#172235}button,input,select{font:inherit}.page{min-height:100vh}
+.auth{display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 50% 0,#263d68,#07111d 60%)}.light .auth{background:linear-gradient(#eaf3ff,#f6f8fb)}
+.box{width:100%;max-width:440px}.logo{text-align:center;font-size:42px;font-weight:900}.nexo{color:#61a9ff}.sub{text-align:center;color:#9eabc0;margin:8px 0 20px}
+.card{background:#0d1a2a;border:1px solid #21334b;border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 10px 30px #0004}.light .card{background:#fff;border-color:#d8e1ec;box-shadow:0 6px 24px #18314d12}
+.input{width:100%;padding:14px;margin:6px 0 10px;background:#091522;border:1px solid #29405c;border-radius:13px;color:#fff;outline:none}.light .input{background:#f7f9fb;color:#172235;border-color:#ccd7e4}
+.primary,.btn{width:100%;padding:13px;border:0;border-radius:13px;background:#3f91e8;color:#fff;font-weight:800;cursor:pointer}.secondary{background:#16283d}.danger{background:#b64b57}.err{color:#ff7777;font-size:13px;min-height:18px}.privacy{font-size:12px;line-height:1.5;color:#aebbd0;background:#0a1523;border-radius:12px;padding:11px;margin:10px 0}
+.auth-tabs{display:flex;gap:8px;margin-bottom:12px}.auth-tabs button{flex:1;padding:11px;border:1px solid #29405c;background:#0c1928;color:#9fb0c5;border-radius:12px;cursor:pointer}.auth-tabs button.active{background:#3f91e8;color:#fff}
+.app{display:none;min-height:100vh;padding-bottom:78px}.top{height:76px;padding:28px 15px 8px;border-bottom:1px solid #17283c;display:flex;align-items:center;gap:10px;background:#081422;position:sticky;top:0;z-index:4}.light .top{background:#fff;border-color:#e0e6ed}.brand{font-size:23px;font-weight:900;flex:1}.coin{color:#ffd45b}
+.search{margin:10px 12px;width:calc(100% - 24px);padding:12px 14px;border:0;border-radius:13px;background:#122237;color:#fff;outline:none}.light .search{background:#e8eef5;color:#172235}
+.section{display:none;animation:sectionIn .28s ease}.section.active{display:block}@keyframes sectionIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}button,.card,.chat,.nav{transition:transform .18s ease,opacity .18s ease,background .22s ease}button:active{transform:scale(.97)}.chat{padding:13px 15px;display:flex;gap:12px;border-bottom:1px solid #142437;cursor:pointer}.chat:hover{background:#0d1b2c}.ava{width:50px;height:50px;border-radius:50%;background:#2c6cae;display:grid;place-items:center;font-size:23px;flex:none}.name{font-weight:800}.prev{color:#8394aa;font-size:13px;margin-top:5px}.small{font-size:12px;color:#7f90a7}
+.nav{position:fixed;bottom:0;left:0;right:0;height:76px;background:#091522;border-top:1px solid #1b2b40;display:flex;justify-content:space-around;align-items:center;z-index:10}.light .nav{background:#fff;border-color:#dce4ec}.nav button{background:none;border:0;color:#8ea1b8;font-size:10px;cursor:pointer}.nav button.active{color:#63aaff}.nav b{display:block;font-size:20px;margin-bottom:2px}
+.row{padding:14px 0;border-bottom:1px solid #203249;display:flex;justify-content:space-between;gap:12px;align-items:center}.feature{display:flex;gap:12px;align-items:center;padding:11px 0}.feature i{font-style:normal;font-size:24px;width:34px}.pill{display:inline-block;background:#162b42;border:1px solid #294564;color:#b9d8ff;padding:4px 8px;border-radius:999px;font-size:11px}
+.chatwindow{position:fixed;inset:0;background:#07111d;z-index:30;padding-bottom:68px}.light .chatwindow{background:#f3f6fa}.chathead{height:76px;padding:28px 12px 8px;border-bottom:1px solid #203149;display:flex;align-items:center;gap:8px;background:#091725}.light .chathead{background:#fff}.back{background:none;border:0;color:white;font-size:28px}.light .back{color:#172235}
+.messages{height:calc(100vh - 136px);overflow:auto;padding:18px;background-size:cover;background-position:center}.bubble{max-width:78%;padding:10px 13px;border-radius:15px;background:#12243a;margin:7px 0}.light .bubble{background:#e5ebf2}.mine{margin-left:auto;background:#2566a5;color:#fff}.meta{font-size:10px;opacity:.65;margin-top:4px;text-align:right}.composer{position:fixed;bottom:0;left:0;right:0;padding:8px;background:#091522;display:flex;gap:6px;z-index:35}.composer input{flex:1;padding:11px 14px;border:0;border-radius:20px;background:#14253a;color:#fff}.composer button{border:0;border-radius:50%;width:42px;background:#3f91e8;color:#fff;cursor:pointer}
+.modal{position:fixed;inset:0;background:#0008;z-index:50;display:none;align-items:flex-end}.modalbox{width:100%;background:#0c1928;border-radius:22px 22px 0 0;padding:20px;max-height:86vh;overflow:auto}.light .modalbox{background:#fff;color:#172235}.listbtn{width:100%;text-align:left;background:none;border:0;color:inherit;padding:14px 0;border-bottom:1px solid #203249;cursor:pointer}
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gift{border:1px solid #29405c;border-radius:15px;padding:12px;text-align:center}.gift-art{font-size:42px;animation:float 2.5s ease-in-out infinite}.gift:nth-child(2) .gift-art{animation-delay:.3s}.gift:nth-child(3) .gift-art{animation-delay:.6s}@keyframes float{50%{transform:translateY(-5px) rotate(2deg)}}
+.skull{font-size:86px;text-align:center;animation:skull 2s ease-in-out infinite}@keyframes skull{50%{transform:translateY(-7px) rotate(-2deg)}}
+.sync{padding:30px 18px;text-align:center}.sync p{color:#8fa0b6}.admin{border:1px solid #d27a31;background:#2b1c11}.freeze{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px}.snow{font-size:78px;animation:spin 4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</style></head><body>
+<div id="registration" class="page auth">
+ <div class="box">
+  <div class="logo">✦ <span class="nexo">Nexo</span>gram</div>
+  <div class="sub">Приватный мессенджер нового поколения</div>
+  <div class="auth-tabs"><button id="tabReg" class="active" onclick="authMode('reg')">Регистрация</button><button id="tabLogin" onclick="authMode('login')">Войти</button><button id="tabAdmin" onclick="authMode('admin')">Админ</button></div>
+  <div class="card" id="adminLoginCard" style="display:none"><b>🔨 Вход администратора</b><p class="small">Отдельный вход для административного аккаунта.</p><input id="adminLoginTag" class="input" placeholder="@username"><input id="adminLoginPhone" class="input" placeholder="Номер телефона" inputmode="tel"><input id="adminLoginPassword" class="input" type="password" placeholder="Пароль"><div id="adminLoginErr" class="err"></div><button class="primary" onclick="adminLogin()">ВОЙТИ КАК АДМИН</button></div>
+  <div class="card">
+   <div id="regForm">
+    <b>Новый аккаунт</b>
+    <input id="regPhone" class="input" placeholder="Номер телефона" inputmode="tel">
+    <input id="regPassword" class="input" type="password" placeholder="Пароль">
+    <input id="regPassword2" class="input" type="password" placeholder="Повторите пароль">
+    <div class="privacy">🔐 Номер используется для входа. В публичном профиле он скрыт.</div>
+    <div id="regErr" class="err"></div><button class="primary" onclick="startRegistration()">ПОЛУЧИТЬ КОД</button>
+   </div>
+   <div id="codeForm" style="display:none">
+    <b>Подтверждение номера</b>
+    <p class="small">Уникальный код для этого аккаунта:</p>
+    <div id="devCode" style="font-size:28px;text-align:center;font-weight:900;letter-spacing:7px;margin:18px 0"></div>
+    <input id="verifyCode" class="input" placeholder="Введите код" inputmode="numeric">
+    <div id="codeErr" class="err"></div><button class="primary" onclick="verifyRegistration()">ПОДТВЕРДИТЬ</button>
+   </div>
+   <div id="loginForm" style="display:none">
+    <b>Вход в аккаунт</b>
+    <input id="loginTag" class="input" placeholder="@username">
+    <input id="loginPhone" class="input" placeholder="Номер телефона" inputmode="tel">
+    <input id="loginPassword" class="input" type="password" placeholder="Пароль">
+    <div id="loginHint" class="small">Введите @username, номер телефона и пароль.</div>
+    <div id="loginErr" class="err"></div><button class="primary" onclick="login()">ВОЙТИ</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div id="messenger" class="app">
+ <section id="chats" class="section active">
+  <div class="top"><div class="brand">✦ <span class="nexo">Nexo</span>gram</div><button class="backtop" onclick="openSearch()">⌕</button></div>
+  <input id="searchInput" class="search" placeholder="Поиск по @username или имени" oninput="filterChats()">
+  <div id="syncBox" class="sync">
+   <div class="skull">💀</div><h2>Синхронизируй контакты</h2><p>Нажмите кнопку — приложение запросит доступ к контактам телефона и покажет найденных пользователей Nexogram.</p>
+   <button class="btn" onclick="syncContacts()">📱 Синхронизировать контакты</button>
+  </div>
+  <div id="chatList"></div>
+ </section>
+
+ <section id="store" class="section">
+  <div class="top"><div class="brand">🪙 Nexo Coin</div></div>
+  <div class="card"><h2><span class="coin">🪙 <span id="storeBalance">200</span> Nexo Coin</span></h2><p class="small">Внутренняя валюта Nexogram</p></div>
+  <div class="card"><h2>🎁 Подарки</h2><div id="giftStore" class="gifts"></div></div>
+ </section>
+
+ <section id="profile" class="section">
+  <div class="top"><div class="brand">Профиль</div><button class="backtop" onclick="logout()">↪</button></div>
+  <div class="card" style="text-align:center"><div class="ava" style="margin:auto">😎</div><h2 id="pn"></h2><div class="tag" id="pt"></div><p id="creatorBadge"></p><p><span class="pill">🔒 Номер скрыт</span></p><p>🪙 <span id="balance">200</span> Nexo Coin</p></div>
+  <div class="card"><h3>🎁 Мои подарки</h3><div id="myGifts"></div></div>
+  <div class="card"><h3>Мой профиль</h3><div class="row">👤 Имя <b id="profileName"></b></div><div class="row">🔗 @username <b id="profileTag"></b></div><div class="row">📱 Телефон <b>Скрыт</b></div><div class="row">🆔 Уникальный код <b id="profileCode"></b></div></div>
+ </section>
+
+ <section id="settings" class="section">
+  <div class="top"><div class="brand">⚙️ Настройки</div></div>
+  <div class="card"><h2>🔐 Конфиденциальность</h2><div class="row">📱 Номер телефона <b>Скрыт</b></div><div class="row">📍 Точная геолокация <b>Выключена</b></div><div class="row">👁️ Последний онлайн <b>Никто</b></div>
+   <div class="row"><span>🎨 Тема</span><select id="themeSelect" onchange="setTheme(this.value)"><option value="dark">Тёмная</option><option value="light">Светлая</option></select></div>
+  </div>
+  <div class="card"><h2>💬 Оформление чатов</h2><button class="btn" onclick="chooseWallpaper()">Изменить обои</button></div>
+  <div class="card"><button class="btn danger" onclick="logout()">Выйти из аккаунта</button></div>
+ </section>
+
+ <section id="admin" class="section">
+  <div class="top"><div class="brand">🔨 Административная панель</div></div>
+  <div class="card admin"><h2>Аккаунт разработчика</h2><p class="small">Доступ администратора подтверждается специальным режимом входа.</p></div>
+  <div class="card"><h3>🚫 Забанить</h3><input id="modTarget" class="input" placeholder="@username или номер"><button class="btn danger" onclick="banUser()">Забанить</button></div>
+  <div class="card"><h3>❄️ Заморозить</h3><input id="freezeTarget" class="input" placeholder="@username или номер"><select id="freezeDuration" class="input"><option value="day">День</option><option value="week">Неделя</option><option value="year">Год</option><option value="forever">Навсегда</option></select><button class="btn" onclick="freezeUser()">Заморозить</button></div>
+  <div class="card"><h3>🪙 Выдать коны</h3><input id="coinTarget" class="input" placeholder="@username или номер"><input id="coinAmount" class="input" type="number" placeholder="Количество"><button class="btn" onclick="giveCoins()">Подарить коны</button></div>
+  <div class="card"><h3>🎁 Подарить подарок</h3><p class="small">Для администратора все подарки бесплатны.</p><div id="adminGifts" class="gifts"></div></div>
+ </section>
+
+ <div class="nav">
+  <button onclick="show('chats',this)" class="active"><b>💬</b>Чаты</button>
+  <button onclick="show('store',this)"><b>🪙</b>Магазин</button>
+  <button onclick="show('profile',this)"><b>👤</b>Профиль</button>
+  <button onclick="show('settings',this)"><b>⚙️</b>Настройки</button>
+ </div>
+</div>
+<div id="modal" class="modal" onclick="closeModal(event)"><div class="modalbox" id="modalContent"></div></div>
+<script>
+const KEY='nexogram_accounts_v2', SESSION='nexogram_session_v2', THEME='nexogram_theme_v2';
+const gifts=[
+ {id:'mask',name:'Маска анонимуса',art:'🎭',price:10,sell:8},
+ {id:'bear',name:'Мишка',art:'🧸',price:10,sell:8},
+ {id:'cup',name:'Кубок Nexogram',art:'🏆',price:50,sell:40}
+];
+const contacts=[['Алексей','@alex_demo','👨'],['Мария','@maria_demo','👩'],['Друзья','@friends_demo','👥']];
+let pending=null, current=null;
+function accounts(){return JSON.parse(localStorage.getItem(KEY)||'{}')}
+function saveAccounts(a){localStorage.setItem(KEY,JSON.stringify(a))}
+function authMode(m){document.getElementById('regForm').style.display=m==='reg'?'block':'none';document.getElementById('loginForm').style.display=m==='login'?'block':'none';document.getElementById('codeForm').style.display='none';document.getElementById('adminLoginCard').style.display=m==='admin'?'block':'none';document.getElementById('tabReg').classList.toggle('active',m==='reg');document.getElementById('tabLogin').classList.toggle('active',m==='login');document.getElementById('tabAdmin').classList.toggle('active',m==='admin')}
+function startRegistration(){
+ let phone=regPhone.value.trim(),pass=regPassword.value,pass2=regPassword2.value,a=accounts();
+ if(!phone||!pass){regErr.textContent='Введите номер телефона и пароль.';return}
+ if(pass!==pass2){regErr.textContent='Пароли не совпадают.';return}
+ if(pass.length<6){regErr.textContent='Пароль должен быть не короче 6 символов.';return}
+ if(a[phone]){regErr.textContent='Такой аккаунт уже есть. Нажмите «Войти».';return}
+ pending={phone,password:pass,code:String(Math.floor(100000+Math.random()*900000))};devCode.textContent=pending.code;verifyCode.value='';regForm.style.display='none';codeForm.style.display='block';
+}
+function verifyRegistration(){
+ if(!pending||verifyCode.value.trim()!==pending.code){codeErr.textContent='Неверный код.';return}
+ let a=accounts(),tag='user_'+pending.phone.replace(/\D/g,'').slice(-8);a[pending.phone]={phone:pending.phone,name:'Пользователь',tag:'@'+tag,code:pending.code,password:pending.password,balance:200,gifts:[],verified:true,admin:false};saveAccounts(a);loginAccount(a[pending.phone]);pending=null;
+}
+function login(){
+ let tag=loginTag.value.trim().replace(/^@/,'').toLowerCase(),phone=loginPhone.value.trim(),pass=loginPassword.value,a=accounts()[phone];loginErr.textContent='';
+ if(!a||a.tag.replace(/^@/,'').toLowerCase()!==tag||a.password!==pass){loginErr.textContent='Никнейм, номер телефона или пароль неверны.';return}loginAccount(a)
+}
+function adminLogin(){
+ let tag=adminLoginTag.value.trim().replace(/^@/,'').toLowerCase(),phone=adminLoginPhone.value.trim(),pass=adminLoginPassword.value;adminLoginErr.textContent='';
+ if(phone!=='+88888'||tag!=='nexooff'||pass!=='nexo6767'){adminLoginErr.textContent='Неверные данные администратора.';return}
+ let a=accounts()[phone];if(!a)a={phone:'+88888',name:'NexoOFF',tag:'@nexoOFF',password:'nexo6767',code:'ADMIN',balance:9999,gifts:[],verified:true,admin:true};else{a.name='NexoOFF';a.tag='@nexoOFF';a.password='nexo6767';a.admin=true;a.verified=true}let all=accounts();all[phone]=a;saveAccounts(all);loginAccount(a)
+}
+function loginAccount(a){current=a;localStorage.setItem(SESSION,a.phone);renderAccount();registration.style.display='none';messenger.style.display='block'}
+function renderAccount(){
+ let oldAdminNav=document.getElementById('adminNav');if(oldAdminNav&&!current.admin)oldAdminNav.remove();
+ let a=current; pn.textContent=a.name+(a.admin?' 🔨':'');pt.textContent=a.tag;profileName.textContent=a.name;profileTag.textContent=a.tag;profileCode.textContent=a.code;
+ creatorBadge.innerHTML=a.admin?'<span class="pill">🔨 Создатель</span>':''; balance.textContent=a.balance;storeBalance.textContent=a.balance;renderGifts();
+ document.getElementById('admin').style.display=a.admin?'block':'none';
+ if(a.admin){let b=document.querySelector('.nav'); if(!document.getElementById('adminNav')){let x=document.createElement('button');x.id='adminNav';x.innerHTML='<b>🔨</b>Админ';x.onclick=()=>show('admin',x);b.appendChild(x)}renderAdminGifts()}
+}
+function renderGifts(){
+ giftStore.innerHTML=gifts.map(g=>`<div class="gift"><div class="gift-art">${g.art}</div><b>${g.name}</b><div class="small">${g.price} 🪙</div><button class="btn" onclick="buyGift('${g.id}')">Купить</button></div>`).join('');
+ myGifts.innerHTML=current.gifts.length?current.gifts.map((id,i)=>{let g=gifts.find(x=>x.id===id);return `<div class="row"><span>${g.art} ${g.name}</span><span><button class="btn" style="width:auto;padding:7px 10px" onclick="sellGift(${i})">Продать за ${g.sell} 🪙</button></span></div>`}).join(''):'<p class="small">Пока подарков нет.</p>';
+}
+function buyGift(id){
+ let g=gifts.find(x=>x.id===id); if(current.balance<g.price){alert('Недостаточно Nexo Coin');return}
+ if(!confirm(`Купить «${g.name}» за ${g.price} 🪙?`))return;
+ current.balance-=g.price;current.gifts.push(id);persist();renderAccount()
+}
+function sellGift(i){let id=current.gifts[i],g=gifts.find(x=>x.id===id);if(!confirm(`Продать «${g.name}» за ${g.sell} 🪙?`))return;current.balance+=g.sell;current.gifts.splice(i,1);persist();renderAccount()}
+function persist(){let a=accounts();a[current.phone]=current;saveAccounts(a)}
+function syncContacts(){
+ if(!navigator.contacts?.select){modal('📱 Контакты','Ваш браузер не предоставляет Contacts Picker. В демо добавлены тестовые контакты, а в реальном приложении здесь запрашивается системное разрешение.');addDemoContacts();return}
+ navigator.contacts.select(['name','tel'],{multiple:true}).then(cs=>{
+   current.contactsSynced=true;
+   current.phoneContacts=cs;
+   persist();
+   renderPhoneContacts(cs);
+   alert('Контакты синхронизированы: '+cs.length);
+ }).catch(()=>alert('Доступ к контактам отменён.'))
+}
+function addDemoContacts(){current.contactsSynced=true;persist();chatList.innerHTML=contacts.map(c=>`<div class="chat" data-name="${c[0].toLowerCase()} ${c[1]} " onclick="openChat('${c[0]}','${c[2]}','${c[1]}')"><div class="ava">${c[2]}</div><div><div class="name">${c[0]}</div><div class="prev">${c[1]} • написать сообщение</div></div></div>`).join('');syncBox.style.display='none'}
+function renderPhoneContacts(cs){
+ let a=accounts();
+ let rows=cs.map((c,i)=>{
+   let name=Array.isArray(c.name)?c.name.join(' '):((c.name&&c.name[0])||'Контакт');
+   let tel=(c.tel&&c.tel[0])||'';
+   let match=Object.values(a).find(x=>x.phone===tel);
+   return `<div class="chat"><div class="ava">👤</div><div style="flex:1"><div class="name">${escapeHtml(name)}</div><div class="prev">${match?match.tag+' • открыть чат':'Не найден в Nexogram • можно пригласить'}</div></div><button class="btn" style="width:auto;padding:9px 12px" onclick="openChat('${escapeHtml(name).replace(/'/g,"\\'")}','👤','${escapeHtml(match?.tag||tel)}')">${match?'Написать':'Пригласить'}</button></div>`
+ }).join('');
+ chatList.innerHTML=rows||'<p class="small" style="padding:16px">Контакты не найдены.</p>';
+ syncBox.style.display='none';
+}
+function openSearch(){searchInput.focus()}
+function filterChats(){let q=searchInput.value.toLowerCase();document.querySelectorAll('#chatList .chat').forEach(x=>x.style.display=x.dataset.name.includes(q)?'flex':'none')}
+function openChat(name,emoji,tag){
+ let w=document.createElement('div');w.className='chatwindow';w.innerHTML=`<div class="chathead"><button class="back" onclick="this.closest('.chatwindow').remove()">‹</button><div class="ava" style="width:42px;height:42px">${emoji}</div><div style="flex:1"><b>${name}</b><div class="small">${tag||'онлайн'} • номер скрыт</div></div><button class="backtop" onclick="chatMenu('${name}','${tag||''}')">⋮</button></div><div class="messages" id="msgs"><div class="bubble">Привет! 👋<div class="meta">${timeNow()}</div></div></div><div class="composer"><button onclick="recordVoice(this)">🎙</button><button onclick="sendAttachment()">＋</button><input placeholder="Сообщение" onkeydown="if(event.key==='Enter')sendMsg(this)"><button onclick="sendMsg(this.previousElementSibling)">➤</button></div>`;document.body.appendChild(w);
+ let wp=localStorage.getItem('nexogram_wallpaper')||'';
+ let mm=w.querySelector('.messages'); if(wp) mm.style.backgroundImage='linear-gradient(#0002,#0002),'+wp;
+}
+function timeNow(){return new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}
+function sendMsg(input){if(!input.value.trim())return;let b=document.createElement('div');b.className='bubble mine';b.innerHTML=escapeHtml(input.value)+'<div class="meta">'+timeNow()+'</div>';input.closest('.chatwindow').querySelector('.messages').appendChild(b);input.value=''}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function recordVoice(btn){let w=btn.closest('.chatwindow');let b=document.createElement('div');b.className='bubble mine';b.innerHTML='🎙️ Голосовое сообщение <span class="small">0:08</span><div class="meta">'+timeNow()+'</div>';w.querySelector('.messages').appendChild(b)}
+function sendAttachment(){modal('📎 Вложения',
+ '<button class="listbtn" onclick="pickFile(\'image/*\',\'📷 Фото\')">📷 Фото</button>'+
+ '<button class="listbtn" onclick="pickFile(\'video/*\',\'🎬 Видео\')">🎬 Видео</button>'+
+ '<button class="listbtn" onclick="pickFile(\'video/*\',\'⭕ Видео-кружок\')">⭕ Видео-кружок</button>'+
+ '<button class="listbtn" onclick="pickFile(\'*/*\',\'📄 Файл\')">📄 Файл</button>'+
+ '<button class="listbtn" onclick="shareLocation()">📍 Геопозиция</button>')}
+function pickFile(accept,type){
+ hideModal();
+ let input=document.createElement('input');input.type='file';input.accept=accept;
+ input.onchange=()=>{if(!input.files[0])return;let w=document.querySelector('.chatwindow');let b=document.createElement('div');b.className='bubble mine';b.textContent=type+' • '+input.files[0].name+' • '+timeNow();w?.querySelector('.messages').appendChild(b)};
+ input.click();
+}
+function shareLocation(){
+ hideModal();
+ if(!navigator.geolocation){demoAttachment('📍 Геопозиция');return}
+ navigator.geolocation.getCurrentPosition(pos=>demoAttachment('📍 Геопозиция '+pos.coords.latitude.toFixed(5)+', '+pos.coords.longitude.toFixed(5)),()=>demoAttachment('📍 Геопозиция (доступ запрещён)'));
+}
+function demoAttachment(type){hideModal();let w=document.querySelector('.chatwindow'),b=document.createElement('div');b.className='bubble mine';b.textContent=type+' • '+timeNow();w?.querySelector('.messages').appendChild(b)}
+function chatMenu(name,tag){modal('Профиль собеседника',`<h2>${name}</h2><p class="tag">${tag}</p><button class="btn" onclick="giftUser('${name}')">🎁 Подарить подарок</button><button class="btn secondary" onclick="chooseWallpaper()">🎨 Изменить обои</button>`)}
+function giftUser(name){hideModal();modal('🎁 Подарить подарок','<div class="gifts">'+gifts.map(g=>`<div class="gift"><div class="gift-art">${g.art}</div><b>${g.name}</b><button class="btn" onclick="adminFreeGift('${g.id}','${name}')">${current.admin?'Подарить бесплатно':'Подарить за '+g.price+' 🪙'}</button></div>`).join('')+'</div>')}
+function adminFreeGift(id,name){if(!current.admin){hideModal();let g=gifts.find(x=>x.id===id);if(current.balance<g.price)return alert('Недостаточно монет');current.balance-=g.price}hideModal();alert('Подарок отправлен '+name+' 🎁');persist();renderAccount()}
+function chooseWallpaper(){modal('🎨 Обои','<button class="listbtn" onclick="setWallpaper(\'\')">Стандартные</button><button class="listbtn" onclick="setWallpaper(\'linear-gradient(135deg,#152b48,#07111d)\')">Ночной градиент</button><button class="listbtn" onclick="setWallpaper(\'linear-gradient(135deg,#fff,#dcecff)\')">Светлый градиент</button>')}
+function setWallpaper(bg){
+ document.querySelectorAll('.messages').forEach(x=>x.style.backgroundImage=bg?'linear-gradient(#0002,#0002),'+bg:'none');
+ localStorage.setItem('nexogram_wallpaper',bg||'');
+ hideModal()
+}
+function setTheme(v){document.body.classList.toggle('light',v==='light');localStorage.setItem(THEME,v)}
+function show(id,btn){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+function modal(title,text){modalContent.innerHTML='<h2>'+title+'</h2>'+text+'<button class="btn secondary" onclick="hideModal()">Закрыть</button>';modalEl().style.display='flex'}
+function modalEl(){return document.getElementById('modal')}
+function hideModal(){modalEl().style.display='none'}function closeModal(e){if(e.target.id==='modal')hideModal()}
+function logout(){localStorage.removeItem(SESSION);current=null;messenger.style.display='none';registration.style.display='flex';authMode('login')}
+function findTarget(v){let a=accounts(),q=v.trim().toLowerCase();return Object.values(a).find(x=>x.tag.toLowerCase()===q||x.phone.toLowerCase()===q)}
+function banUser(){let t=findTarget(modTarget.value);if(!t)return alert('Пользователь не найден');let a=accounts();a[t.phone].banned=true;saveAccounts(a);alert('Аккаунт заблокирован.')}
+function freezeUser(){let t=findTarget(freezeTarget.value);if(!t)return alert('Пользователь не найден');let a=accounts(),dur=freezeDuration.value;a[t.phone].freeze=dur;a[t.phone].freezeUntil=Date.now()+({day:864e5,week:6048e5,year:31536e6,forever:Infinity}[dur]);saveAccounts(a);alert('Аккаунт заморожен.')}
+function giveCoins(){let t=findTarget(coinTarget.value),n=Number(coinAmount.value);if(!t||!n||n<1)return alert('Проверьте тег/номер и количество');let a=accounts();a[t.phone].balance+=n;saveAccounts(a);alert('Коны начислены в аккаунт '+t.tag)}
+function renderAdminGifts(){adminGifts.innerHTML=gifts.map(g=>`<div class="gift"><div class="gift-art">${g.art}</div><b>${g.name}</b><div class="small">Бесплатно для администратора</div><button class="btn" onclick="adminFreeGift('${g.id}','пользователю')">Выбрать</button></div>`).join('')}
+function checkState(){
+ let phone=localStorage.getItem(SESSION),a=accounts()[phone];
+ if(!a){registration.style.display='flex';messenger.style.display='none';return}
+ if(a.banned){document.body.innerHTML='<div class="freeze"><div><div class="snow">⛔</div><h1>Ваш аккаунт заблокирован</h1><p>Если вы считаете это ошибкой, напишите нам в поддержку.</p></div></div>';return}
+ if(a.freeze && a.freeze!=='forever' && a.freezeUntil>Date.now() || a.freeze==='forever'){let d=a.freeze==='day'?'день':a.freeze==='week'?'неделю':a.freeze==='year'?'год':'навсегда';document.body.innerHTML=`<div class="freeze"><div><div class="snow">❄️</div><h1>Ваш аккаунт заморожен</h1><p>Ваш аккаунт заморожен на ${d}. Просим прощения.</p></div></div>`;return}
+ current=a;renderAccount();registration.style.display='none';messenger.style.display='block';if(!a.contactsSynced){syncBox.style.display='block'}else addDemoContacts()
+}
+const savedTheme=localStorage.getItem(THEME)||'dark';setTheme(savedTheme);themeSelect.value=savedTheme;
+function initAdminShortcut(){
+ // Developer seed account is created only when the requested special phone is
+ // explicitly registered through the same verification flow.
+}
+window.addEventListener('load',checkState);
+</script></body></html>
